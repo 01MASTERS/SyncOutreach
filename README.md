@@ -33,7 +33,7 @@ The backend runs on port `8081` by default. It uses SQLite with Prisma ORM.
    ```bash
    npx prisma generate
    npx prisma db push
-   npm run prisma seed
+   npx prisma db seed
    ```
 4. Start the backend development server:
    ```bash
@@ -54,6 +54,9 @@ The frontend runs on port `5173` (or similar) by default and proxies API request
    npm run dev
    ```
 4. Open your browser to the URL provided in the terminal (usually `http://localhost:5173`).
+
+### 🚀 Quick Start (Windows Only)
+If you are on Windows, you can simply double-click the `start-dev.bat` file in the root directory. This will automatically open two terminal windows and start both the frontend and backend servers for you! *(Note: You must still run `npm install` in both directories first)*.
 
 ## Technologies Used
 
