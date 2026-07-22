@@ -1,4 +1,4 @@
-# Cold Email Tracker (Outreach CRM)
+# SyncOutreach
 
 A full-stack application built to track professional network connections, companies, and outreach activities. The project consists of a React (TanStack Start/Vite) frontend and a Node.js (Express + Prisma) backend using SQLite for data storage.
 
