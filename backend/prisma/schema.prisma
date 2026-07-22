@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Company {
+  id        String    @id @default(uuid())
+  name      String
+  website   String?
+  linkedin  String?
+  size      String
+  contacts  Contact[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Tag {
+  id        String    @id @default(uuid())
+  name      String    @unique
+  contacts  Contact[] @relation("ContactTags")
+}
+
+model Contact {
+  id        String    @id @default(uuid())
+  name      String
+  role      String?
+  email     String?
+  linkedin  String?
+  twitter   String?
+  status    String    @default("new")
+  companyId String?
+  company   Company?  @relation(fields: [companyId], references: [id], onDelete: SetNull)
+  tags      Tag[]      @relation("ContactTags")
+  outreaches Outreach[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Outreach {
+  id               String    @id @default(uuid())
+  contactId        String
+  contact          Contact   @relation(fields: [contactId], references: [id], onDelete: Cascade)
+  platform         String
+  type             String
+  date             DateTime
+  nextFollowupDate DateTime?
+  followupCompleted Boolean   @default(false)
+  referenceUrl     String?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+}
